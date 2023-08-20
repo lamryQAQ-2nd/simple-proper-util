@@ -15,8 +15,11 @@
 
 <h1>Testing proper-huk.js</h1>
 
+<p>This page allows you to test the functionalities of the <code>proper-huk.js</code> utility. Follow the instructions in each section to check each function's output.</p>
+
 <section>
     <h2>Test testProperExists function</h2>
+    <p>Enter a JSON object and a property name. Click "Test" to check if the property exists in the given object.</p>
     <label for="obj">Enter object (JSON format):</label>
     <textarea id="obj" rows="5" cols="50">{ "prop1": { "arr": ["a", "b", "c"], "str": "Hello" }, "prop2": { "arr": [ { "nested": "Universe" } ], "str": "Hello again!" } }</textarea>
 
@@ -29,6 +32,7 @@
 
 <section>
     <h2>Test getProper function</h2>
+    <p>Enter a path string to retrieve the value at that path from the given object.</p>
     <label for="path">Enter path:</label>
     <input type="text" id="path" value="prop1.arr[1]">
 
@@ -38,6 +42,7 @@
 
 <section>
     <h2>Test putProper function</h2>
+    <p>Enter a path and a value to set the value at the specified path in the given object. The updated object will be displayed.</p>
     <label for="setPath">Enter path:</label>
     <input type="text" id="setPath" value="prop1.arr[1]">
 
