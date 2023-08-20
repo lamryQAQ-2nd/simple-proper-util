@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test for proper-huk.js</title>
+    <style>
+        label, input, button {
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Testing proper-huk.js</h1>
+
+<section>
+    <h2>Test testProperExists function</h2>
+    <label for="obj">Enter object (JSON format):</label>
+    <textarea id="obj" rows="5" cols="50">{ "prop1": { "arr": ["a", "b", "c"], "str": "Hello" }, "prop2": { "arr": [ { "nested": "Universe" } ], "str": "Hello again!" } }</textarea>
+
+    <label for="propName">Enter property name:</label>
+    <input type="text" id="propName" value="prop1.str">
+
+    <button onclick="testProperExists()">Test</button>
+    <div id="resulttestProperExists"></div>
+</section>
+
+<section>
+    <h2>Test getProper function</h2>
+    <label for="path">Enter path:</label>
+    <input type="text" id="path" value="prop1.arr[1]">
+
+    <button onclick="testgetProper()">Test</button>
+    <div id="resultgetProper"></div>
+</section>
+
+<section>
+    <h2>Test putProper function</h2>
+    <label for="setPath">Enter path:</label>
+    <input type="text" id="setPath" value="prop1.arr[1]">
+
+    <label for="setValue">Enter value:</label>
+    <input type="text" id="setValue" value="Modified Value">
+
+    <button onclick="testputProper()">Test</button>
+    <div id="resultputProper"></div>
+</section>
+
+<script src="proper-huk.js"></script>
+<script>
+    function testProperExists() {
+        let obj = JSON.parse(document.getElementById("obj").value);
+        let propName = document.getElementById("propName").value;
+
+        let result = testProperExists(obj, propName);
+        document.getElementById("resulttestProperExists").textContent = "Result: " + result;
+    }
+
+    function testgetProper() {
+        let obj = JSON.parse(document.getElementById("obj").value);
+        let path = document.getElementById("path").value;
+
+        let result = getProper(obj, path);
+        document.getElementById("resultgetProper").textContent = "Result: " + JSON.stringify(result);
+    }
+
+    function testputProper() {
+        let obj = JSON.parse(document.getElementById("obj").value);
+        let path = document.getElementById("setPath").value;
+        let value = document.getElementById("setValue").value;
+
+        putProper(obj, path, value);
+        document.getElementById("resultputProper").textContent = "Updated object: " + JSON.stringify(obj);
+    }
+</script>
+
+</body>
+</html>
