@@ -51,3 +51,7 @@ export function putProper(obj, path, val) {
   internal.putPropertyInternal(obj, val, parsed);
   return obj;
 }
+
+export function getAllProperPaths(obj) {
+  return internal.getAllProperPaths(obj);
+}
